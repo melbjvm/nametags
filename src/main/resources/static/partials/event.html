@@ -5,10 +5,10 @@
 </div>
 
 <div>
-
     <div class="col-xs-6 col-sm-3 placeholder" ng-repeat="attendee in attendees">
-        <img src="{{attendee.pictureUrl}}">
+        <img src="data:image/jpg;base64,{{attendee.pictureData}}" ng-if="attendee.pictureData">
+        <img src="{{attendee.pictureUrl}}" ng-if="attendee.pictureUrl">
+        <img src="http://photos3.meetupstatic.com/photos/event/7/3/a/2/global_414329602.jpeg" ng-if="!attendee.pictureUrl && !attendee.pictureData">
         <h4>{{attendee.name}}</h4>
     </div>
-
 </div>

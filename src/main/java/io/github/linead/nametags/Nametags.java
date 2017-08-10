@@ -4,7 +4,6 @@ import io.github.linead.nametags.domain.Attendee;
 import io.github.linead.nametags.domain.Event;
 import io.github.linead.nametags.domain.Members;
 import io.github.linead.nametags.domain.Rsvp;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDateTime;
@@ -140,8 +141,14 @@ public class Nametags extends SpringBootServletInitializer implements CommandLin
         String imageData = "";
 
         try {
-            byte[] b = IOUtils.toByteArray((new URL(pictureURLStr)).openStream());
-            imageData = Base64.getEncoder().encodeToString(b);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            InputStream is = new URL(pictureURLStr).openStream();
+            int reads = is.read();
+            while(reads != -1) {
+                baos.write(reads);
+                reads = is.read();
+            }
+            imageData = Base64.getEncoder().encodeToString(baos.toByteArray());
         } catch(MalformedURLException e) {
             log.error("getAttendeeList() Bad photo URL:" + e.getMessage());
         } catch(IOException e) {
