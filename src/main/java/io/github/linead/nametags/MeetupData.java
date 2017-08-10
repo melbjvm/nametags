@@ -23,14 +23,14 @@ import java.util.stream.Stream;
 public class MeetupData {
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    Environment env;
-
     @Value("${meetup-api.key}")
     private String key;
 
     @Value("${meetup-url-path}")
     private String meetupPath;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     private static final String EVENT_URL = "https://api.meetup.com/{meetup_url_path}/events?scroll=recent_past&photo-host=public&page=20&key={key}";
 
@@ -40,19 +40,18 @@ public class MeetupData {
 
     private static final String HOSTS_URL = "https://api.meetup.com/{meetup_url_path}/events/{event_id}/hosts?key={key}";
 
-
     public String getKey() { return key; }
 
     public Event[] getNextMeetups() {
 
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<>();
         params.put("key", getKey());
         params.put("meetup_url_path", getMeetupPath());
 
         log.info("getNextMeetups() querying URL:" + EVENT_URL);
 
-        ResponseEntity<Event[]> responseEntity = restTemplate.getForEntity(EVENT_URL, Event[].class, params);
+        ResponseEntity<Event[]> responseEntity = restTemplate
+          .getForEntity(EVENT_URL, Event[].class, params);
         Event[] events = responseEntity.getBody();
 
         return events;
@@ -60,7 +59,6 @@ public class MeetupData {
     }
 
     public Rsvps getRsvps(String eventId) {
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("event_id", eventId);
         params.put("key", getKey());
@@ -75,7 +73,6 @@ public class MeetupData {
 
     @Cacheable("members")
     public Map<String, Members.Member> getMembers(String groupId) {
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<String, Object>();
         int page = 0;
         params.put("group_id", groupId);
@@ -109,8 +106,6 @@ public class MeetupData {
                             )));
         }
 
-
-
         return memberMap;
     }
 
@@ -120,8 +115,6 @@ public class MeetupData {
     }
 
     public Set<String> getHosts(String eventId) {
-
-        RestTemplate restTemplate = new RestTemplate();
         Map<String, Object> params = new HashMap<String, Object>();
 
         params.put("meetup_url_path", getMeetupPath());

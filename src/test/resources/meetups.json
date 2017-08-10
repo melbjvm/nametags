@@ -1,0 +1,43 @@
+[
+  {
+    "created": 1453267803000,
+    "duration": 7200000,
+    "id": "abcdefg",
+    "name": "Do you really get Class loaders?",
+    "rsvp_limit": 101,
+    "status": "past",
+    "time": 1462350600000,
+    "rsvp_open_offset": "PT744H",
+    "updated": 1462831793000,
+    "utc_offset": 36000000,
+    "waitlist_count": 0,
+    "yes_rsvp_count": 76,
+    "venue": {
+      "id": 23556069,
+      "name": "Australia",
+      "lat": -36.81652069091797,
+      "lon": 154.96376037597656,
+      "repinned": false,
+      "address_1": "Level 9, 1 Fake St",
+      "city": "Melbourne",
+      "country": "au",
+      "localized_country_name": "Australia"
+    },
+    "group": {
+      "created": 1329700714000,
+      "name": "Melbourne Java & JVM Users Group",
+      "id": 3326032,
+      "join_mode": "open",
+      "lat": -37.810001373291016,
+      "lon": 144.9600067138672,
+      "urlname": "Melbourne-Java-JVM-Users-Group",
+      "who": "0xCAFEBABEs",
+      "localized_location": "Melbourne, Australia",
+      "region": "en_US"
+    },
+    "link": "https://www.meetup.com/Melbourne-Java-JVM-Users-Group/events/229152675/",
+    "description": "<p>Whether you realise it or not, every Java Developer relies on Class Loaders whilst developing and deploying their applications. MelbJVM have got in an expert to talk about Class Loaders in May's meetup. We'll have Java Champion, vJUG lead and developer advocate Simon Maple, from ZeroTurnaround, presenting via stream from the UK exclusively for MelbJVM, with yet another hit-it-out-of-the-ballpark talk you don't want to miss.  Along with <i>a very cool  giveaway</i> to celebrate Star Wars Day, and our regular news round-up, plus delicious noms and venue that Thoughtworks has to offer too!.</p> <p><br/><b>Abstract:</b></p> <p>Class loaders are at the core of the Java language. Java EE containers, OSGi, NetBeans modules, Tapestry 5, Grails and many others use class loaders heavily. Yet when something goes wrong, would you know how to solve it?<br/>In this session we'll take a tour of the Java class loading mechanism, both from JVM and developer point of view. We will look at typical problems that you get with class loading and how to solve them. ClassNoDefError, IncompatibleClassChangeError, LinkageError and many others are symptoms of specific things going wrong that you can usually find and fix. For each problem we'll go through a hands on demo with a corresponding solution.<br/>We'll also take a look at how and why class loaders leak and how can you remedy that.</p> <p><b>Bio: </b></p> <p>Simon is a Developer Advocate at ZeroTurnaround, a Java Champion since 2014, JavaOne Rockstar speaker in 2014, Virtual JUG founder and organiser, London Java Community co-leader and RebelLabs author. He is an experienced speaker, having presented at JavaOne, JavaZone, Jfokus, DevoxxUK, DevoxxFR, JavaZone, JMaghreb and many more including many JUG tours. His passion is around user groups and communities. When not traveling, Simon enjoys spending quality time with his family, cooking and eating great food.</p> <p><b>Sponsors</b></p> <p>Thanks to Thoughtworks for the food, drinks and the use of their venue.</p> <p><b>Prizes</b></p> <p>ZeroTurnaround have a special giveaway - a Sphero BB-8 droid! </p> <p>Our friends at Jetbrains also have a license for their IDE to give away too</p> <p><br/><i>May the Fourth be with you!</i></p> ",
+    "how_to_find_us": "",
+    "visibility": "public"
+  }
+]
