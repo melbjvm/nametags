@@ -19,9 +19,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsAsyncClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
@@ -131,6 +133,13 @@ public class Nametags extends SpringBootServletInitializer implements CommandLin
     @Bean
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager("members");
+    }
+
+    @Bean
+    public RestTemplate restTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.setRequestFactory(new HttpComponentsAsyncClientHttpRequestFactory());
+        return restTemplate;
     }
 
     public Set<String> getHosts(String eventId) {
